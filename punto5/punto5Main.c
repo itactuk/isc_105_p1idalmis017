@@ -4,7 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "punto1Lib.h"
+
+#include "punto5Lib.h"
 
 int main(){
 

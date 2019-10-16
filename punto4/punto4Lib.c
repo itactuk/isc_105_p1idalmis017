@@ -4,22 +4,28 @@
 
 #include "punto4Lib.h"
 
+struct producto _busqueda_binaria_recursiva(int id, struct producto prods[], int ii, int is);
+
 /**
- * Data la calificacion en formato de letra         (A, B, C, D, F)
- * retorna la cantidad de puntos correspondientes   (4, 3, 2, 1, 0)
- * @param c
+ * Si no encuentra el producto debe de retornar -1 en el id del producto
+ * @param id
+ * @param productos
+ * @param n es la cantidad de elementos en el arreglo produtos
  * @return
  */
-int puntos_por_letras(char c){
-    return -1;
+struct producto busqueda_binaria(int id, struct producto productos[], int n){
+    return _busqueda_binaria_recursiva(id, productos, 0, n-1);
 }
 
 /**
- * Calcula la cantidad de puntos de una materia. Consiste en multiplicar puntos por creditos
- * @param puntos
- * @param creditos
+ * Debe ser implementado con recursividad.
+ * Si no encuentra el producto debe de retornar -1 en el id del producto
+ * @param id
+ * @param prods
+ * @param ii es el indice inferior
+ * @param is es el indice superior
  * @return
  */
-int puntos_por_materia(int puntos, int creditos){
+struct producto _busqueda_binaria_recursiva(int id, struct producto prods[], int ii, int is){
 
 }

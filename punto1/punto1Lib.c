@@ -4,7 +4,11 @@
 
 #include "punto1Lib.h"
 
-int mcd(int x, int y){
+/**
+ * Invierte una cadena.
+ * Dado: "Hola" debe de convertila en "aloH"
+ * @param cadena
+ */
+void invierte (char cadena[]){
 
-    return 0;
 }
