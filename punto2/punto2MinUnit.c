@@ -6,40 +6,47 @@
 
 #include "punto2Lib.h"
 
-#define MINUNIT_EPSILON 1E-2
+#define MINUNIT_EPSILON 1E-12
 
-COMPLEJO x = {1.10, 2.00};
-COMPLEJO y = {2.00, -1.00};
-
-MU_TEST(test_SumaComplejo) {
-    COMPLEJO res = suma(x, y);
-    mu_assert_int_eq(3.10, res.real);
-    mu_assert_int_eq(1.00, res.imaginaria);
+MU_TEST(test_ParRangoValido) {
+    /**
+     * El mcd de 6 y 1 es 1
+     * El mcd de 6 y 2 es 2
+     * El mcd de 6 y 3 es 3
+     * El mcd de 6 y 4 es 2
+     * El mcd de 6 y 5 es 1
+     * El mcd de 6 y 6 es 6
+     * El mcd de 6 y 7 es 1
+     * El mcd de 6 y 8 es 2
+     * La sumatoria de todos los mcd pares es 2 + 2 + 6 + 2
+     * Por lo tanto el resultado es 12
+     */
+    mu_assert_int_eq(12, sumatoria_mcd(6, 1, 8));
 }
 
-MU_TEST(test_RestaComplejo) {
-    COMPLEJO res = resta(x, y);
-    mu_assert_int_eq(-0.90, res.real);
-    mu_assert_int_eq(3.00, res.imaginaria);
+MU_TEST(test_ImparParRangoValido) {
+    /**
+     * El mcd de 7 y 1 es 1
+     * El mcd de 7 y 2 es 1
+     * El mcd de 7 y 3 es 1
+     * El mcd de 7 y 4 es 1
+     * El mcd de 7 y 5 es 1
+     * El mcd de 7 y 6 es 1
+     * El mcd de 7 y 7 es 7
+     * El mcd de 7 y 8 es 1
+     * La sumatoria de todos los mcd pares es 0, ya que todos los mcd son impares
+     */
+    mu_assert_int_eq(0, sumatoria_mcd(7, 1, 8));
 }
 
-MU_TEST(test_MultiplicaComplejo) {
-    COMPLEJO res = multiplica(x, y);
-    mu_assert_int_eq(4.20, res.real);
-    mu_assert_int_eq(2.90, res.imaginaria);
-}
-
-MU_TEST(test_DivideComplejo) {
-    COMPLEJO res = divide(x, y);
-    mu_assert_int_eq(0.04, res.real);
-    mu_assert_int_eq(1.02, res.imaginaria);
+MU_TEST(test_ParParRangoInValido) {
+    mu_assert_int_eq(0, sumatoria_mcd(8, 8, 1));
 }
 
 MU_TEST_SUITE(test_suite) {
-    MU_RUN_TEST(test_SumaComplejo);
-    MU_RUN_TEST(test_RestaComplejo);
-    MU_RUN_TEST(test_MultiplicaComplejo);
-    MU_RUN_TEST(test_DivideComplejo);
+    MU_RUN_TEST(test_ParRangoValido);
+    MU_RUN_TEST(test_ImparParRangoValido);
+    MU_RUN_TEST(test_ParParRangoInValido);
 }
 
 int main(int argc, char *argv[]) {

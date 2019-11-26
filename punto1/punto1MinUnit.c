@@ -8,35 +8,37 @@
 
 #define MINUNIT_EPSILON 1E-12
 
-MU_TEST(test_CadenaLLenaPar) {
-    char micadena[] = {'a', 'b', 'c', '\0'};
-    invierte(micadena);
-    mu_assert_int_eq('c', micadena[0]);
-    mu_assert_int_eq('b', micadena[1]);
-    mu_assert_int_eq('a', micadena[2]);
-    mu_assert_int_eq('\0', micadena[3]);
+MU_TEST(test_ImPar) {
+    mu_assert_int_eq(5, mcd(15, 20));
 }
 
-MU_TEST(test_CadenaLLenaImpar) {
-    char micadena[] = {'a', 'b', 'c', 'd', '\0'};
-    invierte(micadena);
-    mu_assert_int_eq('d', micadena[0]);
-    mu_assert_int_eq('c', micadena[1]);
-    mu_assert_int_eq('b', micadena[2]);
-    mu_assert_int_eq('a', micadena[3]);
-    mu_assert_int_eq('\0', micadena[4]);
+MU_TEST(test_Par) {
+    mu_assert_int_eq(4, mcd(8, 12));
 }
 
-MU_TEST(test_CadenaVacia) {
-    char micadena[] = {'\0'};
-    invierte(micadena);
-    mu_assert_int_eq('\0', micadena[0]);
+MU_TEST(test_Primo) {
+    mu_assert_int_eq(1, mcd(5, 7));
+}
+
+MU_TEST(test_NadaComun) {
+    mu_assert_int_eq(1, mcd(8, 15));
+}
+
+MU_TEST(test_MismoNumero) {
+    mu_assert_int_eq(8, mcd(8, 8));
+}
+
+MU_TEST(test_Multiplo) {
+    mu_assert_int_eq(8, mcd(8, 16));
 }
 
 MU_TEST_SUITE(test_suite) {
-    MU_RUN_TEST(test_CadenaLLenaPar);
-    MU_RUN_TEST(test_CadenaLLenaImpar);
-    MU_RUN_TEST(test_CadenaVacia);
+        MU_RUN_TEST(test_ImPar);
+        MU_RUN_TEST(test_Par);
+        MU_RUN_TEST(test_Primo);
+        MU_RUN_TEST(test_NadaComun);
+        MU_RUN_TEST(test_MismoNumero);
+        MU_RUN_TEST(test_Multiplo);
 }
 
 int main(int argc, char *argv[]) {
